@@ -73,6 +73,7 @@ void login()
     }
     else{
         cout <<"\nLOGIN ERROR\n please check your username and password."<<endl;
+        main();
     }
 }
 // register first
@@ -89,4 +90,47 @@ void reg()
     reg<<reguser<<" "<<regpass<<endl;
     cout<<"Registration sucessifull"<<endl;
     main();
+}
+
+void forgot()
+{
+    int change;
+    system("cls");
+    cout<<"forgot password? we're here to help."<<endl;
+    cout<<"1. search your id by username"<<endl;
+    cout<<"2. Main password"<<endl;
+    cin >> change;
+
+    switch(change)
+    {
+        case 1:
+        int count = 0;
+        string searchuser,su,sp;
+        cout <<"\nEnter your remembered username: ";
+        cin >> searchuser;
+
+        ifstream searchuser("database.txt");
+        while(searchuser>>su>>sp)
+        {
+            if(su == searchuser)
+            {
+                count = 1;
+            }
+        }
+        searchuser.close();
+        if(count == 1)
+        {
+            cout <<"\ncount found"<<endl;
+            cout <<"\nYour password is: "<<endl;
+            cin.get();
+            system("cls");
+            main();
+        }
+        else{
+            cout <<"\nsorry your userid was not found in our database.\n";
+            cin.get();
+            main();
+        }
+        break;
+    }
 }
